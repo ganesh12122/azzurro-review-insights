@@ -159,18 +159,37 @@ for (const [propertyId, score, title, pros, cons, ago] of extras) {
 
 reviews.sort((a, b) => (a.reviewDate < b.reviewDate ? 1 : -1));
 
+const updatedAt = new Date().toISOString();
+const lastSync = {
+  at: updatedAt,
+  trigger: "seed",
+  status: "ok",
+  properties: Object.keys(templates),
+  pagesPerProperty: 0,
+  collected: reviews.length,
+  newReviews: reviews.length,
+  mergedTotal: reviews.length,
+  errors: [],
+  note: "Bootstrap dataset seeded for demo while live Booking.com scrape may be WAF-blocked.",
+};
 fs.writeFileSync(
   OUT,
   JSON.stringify(
     {
-      updatedAt: new Date().toISOString(),
+      updatedAt,
       count: reviews.length,
+      lastSync,
       collectionNote:
-        "Bootstrap dataset used because Booking.com WAF blocked automated scrape in this environment. Run npm run scrape to merge live public reviews when reachable. Import saved reviewlist HTML via npm run import:html.",
+        "Bootstrap dataset used because Booking.com WAF blocked automated scrape in this environment. Daily GitHub Action + Sync now merge into this file. Import saved reviewlist HTML via npm run import:html.",
       reviews,
     },
     null,
     2,
   ),
+);
+const syncLogPath = path.join(__dirname, "..", "src", "data", "sync-log.json");
+fs.writeFileSync(
+  syncLogPath,
+  JSON.stringify({ updatedAt, history: [lastSync] }, null, 2),
 );
 console.log(`Wrote ${reviews.length} reviews → ${OUT}`);

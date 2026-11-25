@@ -1,0 +1,22 @@
+{
+  "updatedAt": "2026-11-25T11:14:01.522Z",
+  "history": [
+    {
+      "at": "2026-11-25T11:14:01.522Z",
+      "trigger": "seed",
+      "status": "ok",
+      "properties": [
+        "olympic-paddington",
+        "potts-point",
+        "central-sydney",
+        "darling-harbour"
+      ],
+      "pagesPerProperty": 0,
+      "collected": 39,
+      "newReviews": 39,
+      "mergedTotal": 39,
+      "errors": [],
+      "note": "Bootstrap dataset seeded for demo while live Booking.com scrape may be WAF-blocked."
+    }
+  ]
+}

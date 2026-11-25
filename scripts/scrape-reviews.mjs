@@ -17,6 +17,7 @@ import { chromium } from "playwright";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DATA_PATH = path.join(ROOT, "src", "data", "reviews.json");
+const SYNC_LOG_PATH = path.join(ROOT, "src", "data", "sync-log.json");
 const RAW_DIR = path.join(ROOT, "src", "data", "raw");
 
 const PROPERTIES = [
@@ -188,13 +189,52 @@ function loadExisting() {
   }
 }
 
-function saveReviews(reviews) {
-  fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
+function appendSyncLog(entry) {
+  let history = [];
+  if (fs.existsSync(SYNC_LOG_PATH)) {
+    try {
+      const raw = JSON.parse(fs.readFileSync(SYNC_LOG_PATH, "utf8"));
+      history = Array.isArray(raw.history) ? raw.history : [];
+    } catch {
+      history = [];
+    }
+  }
+  history.unshift(entry);
+  history = history.slice(0, 30);
   fs.writeFileSync(
-    DATA_PATH,
-    JSON.stringify({ updatedAt: new Date().toISOString(), count: reviews.length, reviews }, null, 2),
+    SYNC_LOG_PATH,
+    JSON.stringify({ updatedAt: entry.at, history }, null, 2),
     "utf8",
   );
+}
+
+function saveReviews(reviews, syncMeta) {
+  fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
+  const existingNote = (() => {
+    try {
+      const raw = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
+      return raw.collectionNote || undefined;
+    } catch {
+      return undefined;
+    }
+  })();
+
+  fs.writeFileSync(
+    DATA_PATH,
+    JSON.stringify(
+      {
+        updatedAt: syncMeta.at,
+        count: reviews.length,
+        lastSync: syncMeta,
+        collectionNote: existingNote,
+        reviews,
+      },
+      null,
+      2,
+    ),
+    "utf8",
+  );
+  appendSyncLog(syncMeta);
 }
 
 async function main() {
@@ -267,18 +307,46 @@ async function main() {
 
   await browser.close();
 
+  const beforeIds = new Set(loadExisting().map((r) => r.id));
   const byId = new Map();
   for (const r of loadExisting()) byId.set(r.id, r);
   for (const r of collected) byId.set(r.id, r);
   const merged = [...byId.values()].sort((a, b) => (a.reviewDate < b.reviewDate ? 1 : -1));
-  saveReviews(merged);
+  const newCount = merged.filter((r) => !beforeIds.has(r.id)).length;
+
+  const trigger =
+    process.env.SYNC_TRIGGER ||
+    (process.argv.includes("--scheduled") ? "scheduled" : "manual");
+
+  const syncMeta = {
+    at: new Date().toISOString(),
+    trigger,
+    status: errors.length && collected.length === 0 ? "failed" : errors.length ? "partial" : "ok",
+    properties: targets.map((t) => t.id),
+    pagesPerProperty: pages,
+    collected: collected.length,
+    newReviews: newCount,
+    mergedTotal: merged.length,
+    errors,
+    note:
+      collected.length === 0 && errors.length
+        ? "No reviews parsed — likely Booking.com WAF/challenge. Existing dataset kept; do not treat as all-clear."
+        : undefined,
+  };
+
+  // Always persist merge result + sync status (even if 0 new) so ops can see the attempt.
+  saveReviews(merged, syncMeta);
 
   console.log(`\nSaved ${merged.length} unique reviews → ${DATA_PATH}`);
-  console.log(`Collected this run: ${collected.length}`);
+  console.log(`Collected this run: ${collected.length} (new ids: ${newCount})`);
+  console.log(`Sync status: ${syncMeta.status}`);
   if (errors.length) {
     console.log("Notes/errors:");
     errors.forEach((e) => console.log(" -", e));
   }
+
+  // Non-zero exit on total failure helps CI/cron alert — but keep dataset intact.
+  if (syncMeta.status === "failed") process.exitCode = 2;
 }
 
 main().catch((e) => {

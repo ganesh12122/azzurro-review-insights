@@ -1,0 +1,62 @@
+# Daily Booking.com public review sync
+# - Runs ~midnight Australia/Sydney (AEDT ≈ 13:00 UTC)
+# - Also supports manual "Sync now" via workflow_dispatch
+# - Merges into src/data/reviews.json with dedupe; commits if changed
+
+name: Daily review sync
+
+on:
+  schedule:
+    # 13:00 UTC ≈ 00:00 AEDT (Sydney). Adjust if you need AEST (use 14:00 UTC).
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      pages:
+        description: "Reviewlist pages per property (25 reviews each)"
+        required: false
+        default: "2"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Scrape and merge reviews
+        env:
+          SYNC_TRIGGER: ${{ github.event_name == 'schedule' && 'scheduled' || 'manual' }}
+        run: |
+          PAGES="${{ github.event.inputs.pages }}"
+          if [ -z "$PAGES" ]; then PAGES=2; fi
+          node scripts/scrape-reviews.mjs --pages="$PAGES" --scheduled
+        # exit code 2 = total scrape failure (WAF). Still continue to commit sync-log status.
+        continue-on-error: true
+
+      - name: Commit updated dataset (if any)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/reviews.json src/data/sync-log.json || true
+          if git diff --staged --quiet; then
+            echo "No dataset changes to commit."
+          else
+            git commit -m "chore: sync Booking.com reviews ($(date -u +%Y-%m-%d))"
+            git push
+          fi

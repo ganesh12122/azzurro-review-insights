@@ -57,11 +57,30 @@ Booking.com does **not** provide API access for this use case. This project uses
 3. **Cheerio** parses review cards (score, title, date, guest, text).
 4. Reviews are tagged with operational **topics** and **sentiment**.
 5. Results merge into `src/data/reviews.json` with **SHA1-based IDs** to avoid duplicates and support incremental updates.
+6. Each run writes **`lastSync`** metadata + `src/data/sync-log.json` history (success / partial / failed). Failed scrapes do **not** pretend the property needs “nothing”.
 
 ```bash
 npm run scrape              # all properties, 2 pages each
 npm run scrape -- --pages=3
 npm run scrape -- --property=darling-harbour
+```
+
+### Periodic sync (daily) + Sync now
+
+| Mechanism | What it does |
+|---|---|
+| **GitHub Action** `.github/workflows/daily-review-sync.yml` | Cron ~**00:00 Australia/Sydney (AEDT)** (`0 13 * * *` UTC) scrapes, merges, commits `reviews.json` if changed |
+| **Manual workflow_dispatch** | Run the same job anytime from the Actions tab |
+| **Dashboard “Sync now”** | `POST /api/sync` — dispatches the GitHub workflow when `GITHUB_TOKEN` + `SYNC_REPO` are set; in local/dev can run Playwright directly |
+
+Flow: **Booking.com public pages → scraper → dedupe/merge → reviews.json → dashboard**.
+
+Optional env for production Sync now:
+
+```bash
+GITHUB_TOKEN=ghp_xxx          # or SYNC_DISPATCH_TOKEN
+SYNC_REPO=ganesh12122/azzurro-review-insights
+ALLOW_LOCAL_SYNC=true         # only for local/dev hosts that can run Playwright
 ```
 
 ### HTML import fallback
