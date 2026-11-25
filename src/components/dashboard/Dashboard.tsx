@@ -98,7 +98,7 @@ export function Dashboard({ reviews, updatedAt }: Props) {
   );
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-7 px-4 py-6 sm:px-8 sm:py-8">
+    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-5 sm:gap-7 sm:px-6 sm:py-7 lg:px-8 lg:py-8">
       <header className="relative overflow-hidden rounded-2xl border border-azzurro-line bg-azzurro-navy px-5 py-6 text-white sm:px-8 sm:py-8">
         <div className="pointer-events-none absolute -right-10 -top-16 h-48 w-48 rounded-full bg-azzurro-accent/30 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-azzurro-azure/25 blur-2xl" />

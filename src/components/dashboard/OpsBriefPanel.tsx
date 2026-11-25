@@ -60,9 +60,7 @@ function writeCache(key: string, brief: OpsBriefResult) {
 
 export function OpsBriefPanel({ input }: Props) {
   const cacheKey = useMemo(() => filterCacheKey(input), [input]);
-  const [brief, setBrief] = useState<OpsBriefResult | null>(() =>
-    typeof window === "undefined" ? null : readCache(cacheKey),
-  );
+  const [brief, setBrief] = useState<OpsBriefResult | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const lastKeyRef = useRef<string | null>(null);

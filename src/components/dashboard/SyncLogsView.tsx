@@ -79,7 +79,7 @@ export function SyncLogsView() {
   const history = state?.history || (state?.lastSync ? [state.lastSync] : []);
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-8 sm:py-8">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-5 sm:px-6 sm:py-7 lg:px-8 lg:py-8">
       <header className="azzurro-card overflow-hidden bg-azzurro-navy p-6 text-white sm:p-8">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-azzurro-accent">
           Admin · System
