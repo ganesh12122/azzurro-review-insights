@@ -23,7 +23,10 @@ import {
   topicInsights,
 } from "@/lib/analytics";
 import { TOPIC_LABELS } from "@/lib/topics";
-import { Sparkles, TrendingDown, TrendingUp } from "lucide-react";
+import { TrendingDown, TrendingUp } from "lucide-react";
+import { OpsBriefPanel } from "@/components/dashboard/OpsBriefPanel";
+import { DraftReplyButton } from "@/components/dashboard/DraftReplyButton";
+import type { OpsBriefInput } from "@/lib/ai/opsBrief";
 
 type Props = {
   reviews: Review[];
@@ -56,13 +59,43 @@ export function Dashboard({ reviews, updatedAt }: Props) {
   const trends = useMemo(() => sentimentTrendByWeek(filtered), [filtered]);
   const insights = useMemo(() => topicInsights(filtered), [filtered]);
 
-  const topNegativeTopic = insights.find((i) => i.negativeMentionCount > 0);
-  const insightLine = topNegativeTopic
-    ? `${Math.round(topNegativeTopic.shareOfNegatives * 100)}% of negative reviews in this view mentioned ${topNegativeTopic.label.toLowerCase()}-related issues.`
-    : "Not enough negative reviews in this filter to compute a topic share.";
-
   const propertyName = (id: PropertyId) =>
     PROPERTIES.find((p) => p.id === id)?.shortName || id;
+
+  const propertyLabel =
+    propertyId === "all"
+      ? "All properties"
+      : PROPERTIES.find((p) => p.id === propertyId)?.name || propertyId;
+
+  const opsBriefInput: OpsBriefInput = useMemo(
+    () => ({
+      propertyLabel,
+      weekAvg: kpis.currentWeek.avg,
+      weekDelta: kpis.delta,
+      weekCount: kpis.currentWeek.count,
+      overallAvg: kpis.overallAvg,
+      total: kpis.total,
+      positive: kpis.positive,
+      neutral: kpis.neutral,
+      negative: kpis.negative,
+      topTopics: insights.slice(0, 4).map((t) => ({
+        label: t.label,
+        mentionCount: t.mentionCount,
+        negativeMentionCount: t.negativeMentionCount,
+        shareOfNegatives: t.shareOfNegatives,
+      })),
+      sampleNegatives: filtered
+        .filter((r) => r.sentiment === "negative")
+        .slice(0, 5)
+        .map((r) => ({
+          score: r.overallScore,
+          title: r.title,
+          text: r.text.slice(0, 220),
+          property: propertyName(r.propertyId),
+        })),
+    }),
+    [propertyLabel, kpis, insights, filtered],
+  );
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-7 px-4 py-6 sm:px-8 sm:py-8">
@@ -192,19 +225,7 @@ export function Dashboard({ reviews, updatedAt }: Props) {
         />
       </section>
 
-      <section className="relative overflow-hidden rounded-2xl border border-azzurro-accent/20 bg-azzurro-accent-soft/70 px-5 py-4">
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 rounded-lg bg-azzurro-accent p-1.5 text-white">
-            <Sparkles className="h-4 w-4" />
-          </span>
-          <div>
-            <p className="text-sm font-semibold text-azzurro-navy">Ops insight</p>
-            <p className="mt-1 text-sm leading-relaxed text-azzurro-ink/80">
-              {insightLine}
-            </p>
-          </div>
-        </div>
-      </section>
+      <OpsBriefPanel input={opsBriefInput} />
 
       <div className="grid gap-5 lg:grid-cols-2">
         <section className="azzurro-card p-5">
@@ -405,6 +426,13 @@ export function Dashboard({ reviews, updatedAt }: Props) {
                   ))}
                 </div>
               )}
+              <DraftReplyButton
+                review={r}
+                propertyName={
+                  PROPERTIES.find((p) => p.id === r.propertyId)?.name ||
+                  propertyName(r.propertyId)
+                }
+              />
             </article>
           ))}
           {!filtered.length && (

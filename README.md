@@ -19,13 +19,16 @@ Booking.com review insights dashboard for **four Azzurro Hotels properties**, bu
 - **Filters:** property, date range, sentiment, keyword search
 - **Trends:** positive / neutral / negative counts by week
 - **Operational insights:** keyword topic grouping (cleanliness, check-in, staff, noise, facilities, location, room condition, value) with shares such as *“X% of negative reviews mentioned cleanliness”*
+- **Ops Brief:** prioritized onsite actions from the current filter (AI when configured, rule-based fallback otherwise)
+- **Draft reply:** Booking.com-style manager replies per review, with copy-to-clipboard
 
 ## Stack
 
 - Next.js (App Router) + TypeScript + Tailwind CSS
 - Recharts for charts
 - Playwright + Cheerio for public review collection
-- Local JSON dataset (no passwords / API keys required for demo)
+- Local JSON dataset (dashboard works without an AI key)
+- Optional OpenAI-compatible AI gateway via env (`AI_GATEWAY_*`)
 
 ## Setup
 
@@ -37,6 +40,18 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Optional AI (OpenAI-compatible)
+
+Copy [`.env.example`](.env.example) → `.env.local` and set:
+
+```bash
+AI_GATEWAY_KEY=your-key
+AI_GATEWAY_BASE_URL=https://your-provider.example/v1
+AI_GATEWAY_MODEL=your-model-alias
+```
+
+Any OpenAI-compatible `POST /chat/completions` endpoint works. If these are missing, Ops Brief and Draft reply still work via deterministic fallbacks.
 
 ### Production build
 
