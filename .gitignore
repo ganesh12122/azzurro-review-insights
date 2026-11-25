@@ -48,4 +48,8 @@ docs/private/
 # Large raw scrape dumps (optional local debugging)
 src/data/raw/
 
+# Shared daily Ops Brief cache (regenerated at runtime)
+src/data/ops-brief-cache.json
+
+
 .vercel

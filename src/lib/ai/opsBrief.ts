@@ -97,9 +97,10 @@ export function deterministicBrief(input: OpsBriefInput): OpsBriefResult {
 
 export async function generateOpsBrief(
   input: OpsBriefInput,
+  opts?: { skipAi?: boolean },
 ): Promise<OpsBriefResult> {
   const fallback = deterministicBrief(input);
-  if (!aiConfigured()) return fallback;
+  if (opts?.skipAi || !aiConfigured()) return fallback;
 
   try {
     const raw = await chatCompletion(

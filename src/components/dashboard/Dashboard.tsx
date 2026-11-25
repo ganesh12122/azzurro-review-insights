@@ -225,7 +225,17 @@ export function Dashboard({ reviews, updatedAt }: Props) {
         />
       </section>
 
-      <OpsBriefPanel input={opsBriefInput} />
+      <OpsBriefPanel
+        input={opsBriefInput}
+        filterScope={{
+          propertyId,
+          from,
+          to,
+          sentiment,
+          query,
+        }}
+      />
+
 
       <div className="grid gap-5 lg:grid-cols-2">
         <section className="azzurro-card p-5">
