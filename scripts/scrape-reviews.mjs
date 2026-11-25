@@ -318,19 +318,31 @@ async function main() {
     process.env.SYNC_TRIGGER ||
     (process.argv.includes("--scheduled") ? "scheduled" : "manual");
 
+  const wafBlocked =
+    collected.length === 0 &&
+    errors.some((e) => /waf|challenge/i.test(e));
+
   const syncMeta = {
     at: new Date().toISOString(),
     trigger,
-    status: errors.length && collected.length === 0 ? "failed" : errors.length ? "partial" : "ok",
+    status:
+      wafBlocked
+        ? "blocked"
+        : errors.length && collected.length === 0
+          ? "failed"
+          : errors.length
+            ? "partial"
+            : "ok",
     properties: targets.map((t) => t.id),
     pagesPerProperty: pages,
     collected: collected.length,
     newReviews: newCount,
     mergedTotal: merged.length,
     errors,
-    note:
-      collected.length === 0 && errors.length
-        ? "No reviews parsed — likely Booking.com WAF/challenge. Existing dataset kept; do not treat as all-clear."
+    note: wafBlocked
+      ? "Booking.com blocked this scrape (WAF/challenge). Your existing dataset is unchanged — dashboard still works. Retry later, use HTML import, or rely on the daily job."
+      : collected.length === 0 && errors.length
+        ? "No reviews parsed. Existing dataset kept; do not treat as all-clear."
         : undefined,
   };
 
@@ -345,7 +357,8 @@ async function main() {
     errors.forEach((e) => console.log(" -", e));
   }
 
-  // Non-zero exit on total failure helps CI/cron alert — but keep dataset intact.
+  // Non-zero exit on hard failure helps CI/cron alert — but keep dataset intact.
+  // WAF "blocked" is expected in some environments; exit 0 so scheduled jobs still commit sync-log.
   if (syncMeta.status === "failed") process.exitCode = 2;
 }
 

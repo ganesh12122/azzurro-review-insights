@@ -47,7 +47,27 @@ npm start
 
 ## Review collection (no Booking.com API)
 
-Booking.com does **not** provide API access for this use case. This project uses a public-page collector:
+Booking.com does **not** provide API access for this use case.
+
+### Recommended (free + reliable): browser export → upload
+
+Automated scrape from cloud IPs is often blocked by Booking.com’s WAF. The **reliable free path** is:
+
+1. Open a property review page in a normal browser (human session).
+2. Save the page as **HTML**, or maintain a simple **CSV/JSON** export.
+3. Upload via the dashboard **Reliable import** panel (or `POST /api/reviews/import`).
+4. Reviews are **deduped by id** and merged into `src/data/reviews.json`.
+
+Sample CSV: `src/data/sample-reviews.csv`
+
+```bash
+# CLI HTML import (drop files in src/data/raw/ first)
+npm run import:html
+```
+
+### Best-effort automated collector
+
+Still included for when the network allows it:
 
 ### Method
 
@@ -67,13 +87,15 @@ npm run scrape -- --property=darling-harbour
 
 ### Periodic sync (daily) + Sync now
 
-| Mechanism | What it does |
+| Mechanism | Role |
 |---|---|
-| **GitHub Action** `.github/workflows/daily-review-sync.yml` | Cron ~**00:00 Australia/Sydney (AEDT)** (`0 13 * * *` UTC) scrapes, merges, commits `reviews.json` if changed |
-| **Manual workflow_dispatch** | Run the same job anytime from the Actions tab |
-| **Dashboard “Sync now”** | `POST /api/sync` — dispatches the GitHub workflow when `GITHUB_TOKEN` + `SYNC_REPO` are set; in local/dev can run Playwright directly |
+| **Dashboard upload** | **Primary** — free, reliable, no WAF |
+| **GitHub Action** daily scrape | Best-effort; may be blocked from GitHub runners |
+| **Sync now** | Best-effort live scrape / workflow dispatch |
 
-Flow: **Booking.com public pages → scraper → dedupe/merge → reviews.json → dashboard**.
+Honest status: scrape runs log `ok` / `partial` / `blocked` / `failed`. A blocked run **keeps existing data** and never reports “all clear”.
+
+Flow (reliable): **Browser page → HTML/CSV/JSON → import API → dedupe/merge → dashboard**.
 
 Optional env for production Sync now:
 

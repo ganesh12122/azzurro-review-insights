@@ -77,10 +77,20 @@ export function SyncPanel() {
   }
 
   const last = state?.lastSync;
+  const statusLabel =
+    last?.status === "blocked"
+      ? "Blocked (Booking.com)"
+      : last?.status === "ok"
+        ? "OK"
+        : last?.status === "partial"
+          ? "Partial"
+          : last?.status === "failed"
+            ? "Failed"
+            : last?.status || "—";
   const statusColor =
     last?.status === "ok"
       ? "text-emerald-700"
-      : last?.status === "partial"
+      : last?.status === "partial" || last?.status === "blocked"
         ? "text-amber-700"
         : last?.status === "failed"
           ? "text-red-700"
@@ -90,11 +100,14 @@ export function SyncPanel() {
     <section className="rounded-xl border border-slate-200 bg-white p-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-sm font-semibold text-slate-900">Data sync</h2>
+          <h2 className="text-sm font-semibold text-slate-900">
+            Auto scrape (best-effort)
+          </h2>
           <p className="mt-1 max-w-2xl text-sm text-slate-600">
-            Reviews are collected from public Booking.com pages, deduped by id,
-            and merged into the dataset. A daily job keeps the feed updated; use
-            Sync now when ops need a fresh pull.
+            Tries Playwright scrape + daily GitHub Action. Often blocked by
+            Booking.com WAF from cloud/datacenter IPs — that is expected. Prefer
+            the green <strong>Reliable import</strong> panel above for guaranteed
+            updates. Sync now still records status honestly (never fake all-clear).
           </p>
         </div>
         <button
@@ -125,8 +138,8 @@ export function SyncPanel() {
           <dt className="text-xs uppercase tracking-wide text-slate-500">
             Status
           </dt>
-          <dd className={`mt-0.5 font-medium capitalize ${statusColor}`}>
-            {last?.status || "—"}
+          <dd className={`mt-0.5 font-medium ${statusColor}`}>
+            {statusLabel}
             {last?.trigger ? ` · ${last.trigger}` : ""}
           </dd>
         </div>

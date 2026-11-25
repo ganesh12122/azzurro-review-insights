@@ -24,6 +24,7 @@ import {
 } from "@/lib/analytics";
 import { TOPIC_LABELS } from "@/lib/topics";
 import { SyncPanel } from "@/components/dashboard/SyncPanel";
+import { ImportPanel } from "@/components/dashboard/ImportPanel";
 
 type Props = {
   reviews: Review[];
@@ -80,6 +81,7 @@ export function Dashboard({ reviews, updatedAt }: Props) {
         </p>
       </header>
 
+      <ImportPanel />
       <SyncPanel />
 
       <section className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-5">
