@@ -1,6 +1,32 @@
 {
-  "updatedAt": "2026-11-25T11:38:19.737Z",
+  "updatedAt": "2026-11-25T22:07:31.575Z",
   "history": [
+    {
+      "at": "2026-11-25T22:07:31.575Z",
+      "trigger": "scheduled",
+      "status": "blocked",
+      "properties": [
+        "olympic-paddington",
+        "potts-point",
+        "central-sydney",
+        "darling-harbour"
+      ],
+      "pagesPerProperty": 2,
+      "collected": 0,
+      "newReviews": 0,
+      "mergedTotal": 39,
+      "errors": [
+        "olympic-paddington@0: challenge/WAF page (0 reviews parsed)",
+        "olympic-paddington@25: challenge/WAF page (0 reviews parsed)",
+        "potts-point@0: challenge/WAF page (0 reviews parsed)",
+        "potts-point@25: challenge/WAF page (0 reviews parsed)",
+        "central-sydney@0: challenge/WAF page (0 reviews parsed)",
+        "central-sydney@25: challenge/WAF page (0 reviews parsed)",
+        "darling-harbour@0: challenge/WAF page (0 reviews parsed)",
+        "darling-harbour@25: challenge/WAF page (0 reviews parsed)"
+      ],
+      "note": "Booking.com blocked this scrape (WAF/challenge). Your existing dataset is unchanged — dashboard still works. Retry later, use HTML import, or rely on the daily job."
+    },
     {
       "at": "2026-11-25T11:38:19.737Z",
       "trigger": "manual-ui",

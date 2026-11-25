@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-11-25T11:38:19.737Z",
+  "updatedAt": "2026-11-25T22:07:31.575Z",
   "count": 39,
   "lastSync": {
-    "at": "2026-11-25T11:38:19.737Z",
-    "trigger": "manual-ui",
+    "at": "2026-11-25T22:07:31.575Z",
+    "trigger": "scheduled",
     "status": "blocked",
     "properties": [
       "olympic-paddington",
@@ -11,62 +11,24 @@
       "central-sydney",
       "darling-harbour"
     ],
-    "pagesPerProperty": 1,
+    "pagesPerProperty": 2,
     "collected": 0,
     "newReviews": 0,
     "mergedTotal": 39,
     "errors": [
       "olympic-paddington@0: challenge/WAF page (0 reviews parsed)",
+      "olympic-paddington@25: challenge/WAF page (0 reviews parsed)",
       "potts-point@0: challenge/WAF page (0 reviews parsed)",
+      "potts-point@25: challenge/WAF page (0 reviews parsed)",
       "central-sydney@0: challenge/WAF page (0 reviews parsed)",
-      "darling-harbour@0: challenge/WAF page (0 reviews parsed)"
+      "central-sydney@25: challenge/WAF page (0 reviews parsed)",
+      "darling-harbour@0: challenge/WAF page (0 reviews parsed)",
+      "darling-harbour@25: challenge/WAF page (0 reviews parsed)"
     ],
     "note": "Booking.com blocked this scrape (WAF/challenge). Your existing dataset is unchanged — dashboard still works. Retry later, use HTML import, or rely on the daily job."
   },
   "collectionNote": "Bootstrap dataset used when live scrape is blocked. Daily GitHub Action + Sync now merge into this file.",
   "reviews": [
-    {
-      "id": "7450194ab91d334c",
-      "propertyId": "central-sydney",
-      "guestName": "Hiro",
-      "guestCountry": "Japan",
-      "reviewDate": "2026-11-25",
-      "overallScore": 8.8,
-      "title": "Easy check-in",
-      "pros": "Check-in was smooth and the bed was comfortable. Central location.",
-      "cons": "",
-      "text": "Easy check-in. Check-in was smooth and the bed was comfortable. Central location. ",
-      "topics": [
-        "check-in",
-        "location",
-        "room-condition"
-      ],
-      "sentiment": "positive",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/central-sydney",
-      "collectionMethod": "seed-bootstrap"
-    },
-    {
-      "id": "c13cc74855acaee0",
-      "propertyId": "olympic-paddington",
-      "guestName": "Sofia",
-      "guestCountry": "Spain",
-      "reviewDate": "2026-11-25",
-      "overallScore": 7.8,
-      "title": "Handy for the stadium",
-      "pros": "Short walk to Allianz Stadium and SCG. Staff at the sports bar were friendly.",
-      "cons": "Room was basic and a bit dated. Street noise on game nights.",
-      "text": "Handy for the stadium. Short walk to Allianz Stadium and SCG. Staff at the sports bar were friendly. Room was basic and a bit dated. Street noise on game nights.",
-      "topics": [
-        "staff",
-        "noise",
-        "room-condition"
-      ],
-      "sentiment": "neutral",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/olympic-paddington",
-      "collectionMethod": "seed-bootstrap"
-    },
     {
       "id": "5c74ec09e1bb74b7",
       "propertyId": "darling-harbour",
@@ -91,6 +53,69 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
+      "id": "c13cc74855acaee0",
+      "propertyId": "olympic-paddington",
+      "guestName": "Sofia",
+      "guestCountry": "Spain",
+      "reviewDate": "2026-11-25",
+      "overallScore": 7.8,
+      "title": "Handy for the stadium",
+      "pros": "Short walk to Allianz Stadium and SCG. Staff at the sports bar were friendly.",
+      "cons": "Room was basic and a bit dated. Street noise on game nights.",
+      "text": "Handy for the stadium. Short walk to Allianz Stadium and SCG. Staff at the sports bar were friendly. Room was basic and a bit dated. Street noise on game nights.",
+      "topics": [
+        "staff",
+        "noise",
+        "room-condition"
+      ],
+      "sentiment": "neutral",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/olympic-paddington",
+      "collectionMethod": "seed-bootstrap"
+    },
+    {
+      "id": "7450194ab91d334c",
+      "propertyId": "central-sydney",
+      "guestName": "Hiro",
+      "guestCountry": "Japan",
+      "reviewDate": "2026-11-25",
+      "overallScore": 8.8,
+      "title": "Easy check-in",
+      "pros": "Check-in was smooth and the bed was comfortable. Central location.",
+      "cons": "",
+      "text": "Easy check-in. Check-in was smooth and the bed was comfortable. Central location. ",
+      "topics": [
+        "check-in",
+        "location",
+        "room-condition"
+      ],
+      "sentiment": "positive",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/central-sydney",
+      "collectionMethod": "seed-bootstrap"
+    },
+    {
+      "id": "26337256efca32f5",
+      "propertyId": "potts-point",
+      "guestName": "Mackenzie",
+      "guestCountry": "Australia",
+      "reviewDate": "2026-11-24",
+      "overallScore": 5,
+      "title": "Bathroom dirty again",
+      "pros": "Staff tried to help.",
+      "cons": "Bathroom was dirty and the room smelled. Cleanliness is the main issue.",
+      "text": "Bathroom dirty again. Staff tried to help. Bathroom was dirty and the room smelled. Cleanliness is the main issue.",
+      "topics": [
+        "cleanliness",
+        "staff",
+        "room-condition"
+      ],
+      "sentiment": "negative",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/potts-point",
+      "collectionMethod": "seed-bootstrap"
+    },
+    {
       "id": "3b61698b1b6eb3d5",
       "propertyId": "darling-harbour",
       "guestName": "Tom",
@@ -112,19 +137,60 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "26337256efca32f5",
+      "id": "7ff78992b5623caa",
+      "propertyId": "central-sydney",
+      "guestName": "Liam",
+      "guestCountry": "Belgium",
+      "reviewDate": "2026-11-23",
+      "overallScore": 8.6,
+      "title": "Near Central Station",
+      "pros": "Breakfast was convenient. Housekeeping kept facilities welcoming. Easy walk to Central.",
+      "cons": "",
+      "text": "Near Central Station. Breakfast was convenient. Housekeeping kept facilities welcoming. Easy walk to Central.",
+      "topics": [
+        "facilities",
+        "location"
+      ],
+      "sentiment": "positive",
+      "scrapedAt": "2026-11-25T11:13:04.212Z",
+      "sourceUrl": "seed://booking/central-sydney",
+      "collectionMethod": "seed-bootstrap"
+    },
+    {
+      "id": "7848408f36fefa6c",
       "propertyId": "potts-point",
-      "guestName": "Mackenzie",
+      "guestName": "Annette",
       "guestCountry": "Australia",
-      "reviewDate": "2026-11-24",
-      "overallScore": 5,
-      "title": "Bathroom dirty again",
-      "pros": "Staff tried to help.",
-      "cons": "Bathroom was dirty and the room smelled. Cleanliness is the main issue.",
-      "text": "Bathroom dirty again. Staff tried to help. Bathroom was dirty and the room smelled. Cleanliness is the main issue.",
+      "reviewDate": "2026-11-23",
+      "overallScore": 7,
+      "title": "Location great, cleanliness uneven",
+      "pros": "Location near Kings Cross and free dinner are appealing.",
+      "cons": "Cleanliness wasn't quite maintained in bathrooms by evening.",
+      "text": "Location great, cleanliness uneven. Location near Kings Cross and free dinner are appealing. Cleanliness wasn't quite maintained in bathrooms by evening.",
       "topics": [
         "cleanliness",
-        "staff",
+        "location",
+        "value"
+      ],
+      "sentiment": "neutral",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/potts-point",
+      "collectionMethod": "seed-bootstrap"
+    },
+    {
+      "id": "99a20947e2d60b7e",
+      "propertyId": "potts-point",
+      "guestName": "Gertrud",
+      "guestCountry": "United States",
+      "reviewDate": "2026-11-23",
+      "overallScore": 4.5,
+      "title": "Not cleaned properly",
+      "pros": "Location is fine.",
+      "cons": "Room was dirty on arrival — dust and hair in bathroom.",
+      "text": "Not cleaned properly. Location is fine. Room was dirty on arrival — dust and hair in bathroom.",
+      "topics": [
+        "cleanliness",
+        "location",
         "room-condition"
       ],
       "sentiment": "negative",
@@ -154,86 +220,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "99a20947e2d60b7e",
-      "propertyId": "potts-point",
-      "guestName": "Gertrud",
-      "guestCountry": "United States",
-      "reviewDate": "2026-11-23",
-      "overallScore": 4.5,
-      "title": "Not cleaned properly",
-      "pros": "Location is fine.",
-      "cons": "Room was dirty on arrival — dust and hair in bathroom.",
-      "text": "Not cleaned properly. Location is fine. Room was dirty on arrival — dust and hair in bathroom.",
-      "topics": [
-        "cleanliness",
-        "location",
-        "room-condition"
-      ],
-      "sentiment": "negative",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/potts-point",
-      "collectionMethod": "seed-bootstrap"
-    },
-    {
-      "id": "7848408f36fefa6c",
-      "propertyId": "potts-point",
-      "guestName": "Annette",
+      "id": "ec6a53a3f0c1dcfe",
+      "propertyId": "darling-harbour",
+      "guestName": "Mackenzie",
       "guestCountry": "Australia",
-      "reviewDate": "2026-11-23",
-      "overallScore": 7,
-      "title": "Location great, cleanliness uneven",
-      "pros": "Location near Kings Cross and free dinner are appealing.",
-      "cons": "Cleanliness wasn't quite maintained in bathrooms by evening.",
-      "text": "Location great, cleanliness uneven. Location near Kings Cross and free dinner are appealing. Cleanliness wasn't quite maintained in bathrooms by evening.",
-      "topics": [
-        "cleanliness",
-        "location",
-        "value"
-      ],
-      "sentiment": "neutral",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/potts-point",
-      "collectionMethod": "seed-bootstrap"
-    },
-    {
-      "id": "7ff78992b5623caa",
-      "propertyId": "central-sydney",
-      "guestName": "Liam",
-      "guestCountry": "Belgium",
-      "reviewDate": "2026-11-23",
-      "overallScore": 8.6,
-      "title": "Near Central Station",
-      "pros": "Breakfast was convenient. Housekeeping kept facilities welcoming. Easy walk to Central.",
-      "cons": "",
-      "text": "Near Central Station. Breakfast was convenient. Housekeeping kept facilities welcoming. Easy walk to Central.",
-      "topics": [
-        "facilities",
-        "location"
-      ],
-      "sentiment": "positive",
-      "scrapedAt": "2026-11-25T11:13:04.212Z",
-      "sourceUrl": "seed://booking/central-sydney",
-      "collectionMethod": "seed-bootstrap"
-    },
-    {
-      "id": "ae57e93dc7ee9423",
-      "propertyId": "olympic-paddington",
-      "guestName": "Priya",
-      "guestCountry": "India",
       "reviewDate": "2026-11-22",
-      "overallScore": 7.5,
-      "title": "Fine for one night",
-      "pros": "Helpful staff and okay value.",
-      "cons": "Some noise from the street.",
-      "text": "Fine for one night. Helpful staff and okay value. Some noise from the street.",
+      "overallScore": 8.4,
+      "title": "Great value — mind the noise",
+      "pros": "Amazing value for Sydney and the food was better than expected. Staff were friendly.",
+      "cons": "Light sleepers may hear hallway noise. Shared bathroom queue in the morning.",
+      "text": "Great value — mind the noise. Amazing value for Sydney and the food was better than expected. Staff were friendly. Light sleepers may hear hallway noise. Shared bathroom queue in the morning.",
       "topics": [
         "staff",
         "noise",
         "value"
       ],
-      "sentiment": "neutral",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/olympic-paddington",
+      "sentiment": "positive",
+      "scrapedAt": "2026-11-25T11:13:04.211Z",
+      "sourceUrl": "seed://booking/darling-harbour",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -259,24 +263,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "ec6a53a3f0c1dcfe",
-      "propertyId": "darling-harbour",
-      "guestName": "Mackenzie",
-      "guestCountry": "Australia",
+      "id": "ae57e93dc7ee9423",
+      "propertyId": "olympic-paddington",
+      "guestName": "Priya",
+      "guestCountry": "India",
       "reviewDate": "2026-11-22",
-      "overallScore": 8.4,
-      "title": "Great value — mind the noise",
-      "pros": "Amazing value for Sydney and the food was better than expected. Staff were friendly.",
-      "cons": "Light sleepers may hear hallway noise. Shared bathroom queue in the morning.",
-      "text": "Great value — mind the noise. Amazing value for Sydney and the food was better than expected. Staff were friendly. Light sleepers may hear hallway noise. Shared bathroom queue in the morning.",
+      "overallScore": 7.5,
+      "title": "Fine for one night",
+      "pros": "Helpful staff and okay value.",
+      "cons": "Some noise from the street.",
+      "text": "Fine for one night. Helpful staff and okay value. Some noise from the street.",
       "topics": [
         "staff",
         "noise",
         "value"
       ],
-      "sentiment": "positive",
-      "scrapedAt": "2026-11-25T11:13:04.211Z",
-      "sourceUrl": "seed://booking/darling-harbour",
+      "sentiment": "neutral",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/olympic-paddington",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -297,27 +301,6 @@
         "room-condition"
       ],
       "sentiment": "neutral",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/potts-point",
-      "collectionMethod": "seed-bootstrap"
-    },
-    {
-      "id": "d143012b8afd792b",
-      "propertyId": "potts-point",
-      "guestName": "Mackenzie",
-      "guestCountry": "Australia",
-      "reviewDate": "2026-11-20",
-      "overallScore": 8,
-      "title": "Receptionist was excellent",
-      "pros": "Receptionist helped throughout the stay. Room was clean when we arrived.",
-      "cons": "Steep stairs every day with luggage.",
-      "text": "Receptionist was excellent. Receptionist helped throughout the stay. Room was clean when we arrived. Steep stairs every day with luggage.",
-      "topics": [
-        "cleanliness",
-        "staff",
-        "room-condition"
-      ],
-      "sentiment": "positive",
       "scrapedAt": "2026-11-25T11:13:04.213Z",
       "sourceUrl": "seed://booking/potts-point",
       "collectionMethod": "seed-bootstrap"
@@ -346,24 +329,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "73a77c958703a450",
-      "propertyId": "olympic-paddington",
-      "guestName": "Aaron",
-      "guestCountry": "United States",
-      "reviewDate": "2026-11-16",
-      "overallScore": 8.5,
-      "title": "Good value near the SCG",
-      "pros": "Comfortable bed, helpful receptionist, fair price for Paddington.",
-      "cons": "No free dinner here unlike other Azzurro pods — worth knowing upfront.",
-      "text": "Good value near the SCG. Comfortable bed, helpful receptionist, fair price for Paddington. No free dinner here unlike other Azzurro pods — worth knowing upfront.",
+      "id": "d143012b8afd792b",
+      "propertyId": "potts-point",
+      "guestName": "Mackenzie",
+      "guestCountry": "Australia",
+      "reviewDate": "2026-11-20",
+      "overallScore": 8,
+      "title": "Receptionist was excellent",
+      "pros": "Receptionist helped throughout the stay. Room was clean when we arrived.",
+      "cons": "Steep stairs every day with luggage.",
+      "text": "Receptionist was excellent. Receptionist helped throughout the stay. Room was clean when we arrived. Steep stairs every day with luggage.",
       "topics": [
+        "cleanliness",
         "staff",
-        "room-condition",
-        "value"
+        "room-condition"
       ],
       "sentiment": "positive",
       "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/olympic-paddington",
+      "sourceUrl": "seed://booking/potts-point",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -386,24 +369,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "8abd6c4fe2a27f2e",
-      "propertyId": "potts-point",
-      "guestName": "Gertrud",
+      "id": "73a77c958703a450",
+      "propertyId": "olympic-paddington",
+      "guestName": "Aaron",
       "guestCountry": "United States",
-      "reviewDate": "2026-11-14",
-      "overallScore": 9,
-      "title": "Views, staff, free meals",
-      "pros": "Location, views, staff and exceptional value. Free dinner and breakfast were a surprise.",
-      "cons": "",
-      "text": "Views, staff, free meals. Location, views, staff and exceptional value. Free dinner and breakfast were a surprise.",
+      "reviewDate": "2026-11-16",
+      "overallScore": 8.5,
+      "title": "Good value near the SCG",
+      "pros": "Comfortable bed, helpful receptionist, fair price for Paddington.",
+      "cons": "No free dinner here unlike other Azzurro pods — worth knowing upfront.",
+      "text": "Good value near the SCG. Comfortable bed, helpful receptionist, fair price for Paddington. No free dinner here unlike other Azzurro pods — worth knowing upfront.",
       "topics": [
         "staff",
-        "location",
+        "room-condition",
         "value"
       ],
       "sentiment": "positive",
       "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/potts-point",
+      "sourceUrl": "seed://booking/olympic-paddington",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -428,24 +411,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "8ba2f493feb068f1",
-      "propertyId": "olympic-paddington",
-      "guestName": "Jean Luc",
-      "guestCountry": "France",
-      "reviewDate": "2026-11-10",
-      "overallScore": 5.4,
-      "title": "Room smelled on arrival",
-      "pros": "Rooftop terrace is nice and location is great for sports.",
-      "cons": "Room smelled of damp. Cleaner said it was done but smell came back next day.",
-      "text": "Room smelled on arrival. Rooftop terrace is nice and location is great for sports. Room smelled of damp. Cleaner said it was done but smell came back next day.",
+      "id": "8abd6c4fe2a27f2e",
+      "propertyId": "potts-point",
+      "guestName": "Gertrud",
+      "guestCountry": "United States",
+      "reviewDate": "2026-11-14",
+      "overallScore": 9,
+      "title": "Views, staff, free meals",
+      "pros": "Location, views, staff and exceptional value. Free dinner and breakfast were a surprise.",
+      "cons": "",
+      "text": "Views, staff, free meals. Location, views, staff and exceptional value. Free dinner and breakfast were a surprise.",
       "topics": [
-        "cleanliness",
+        "staff",
         "location",
-        "room-condition"
+        "value"
       ],
-      "sentiment": "negative",
+      "sentiment": "positive",
       "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/olympic-paddington",
+      "sourceUrl": "seed://booking/potts-point",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -472,25 +455,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "39173e71b7fe7332",
-      "propertyId": "potts-point",
-      "guestName": "Tom",
-      "guestCountry": "United Kingdom",
-      "reviewDate": "2026-11-08",
-      "overallScore": 4.2,
-      "title": "Dirty room on arrival",
-      "pros": "Location is convenient.",
-      "cons": "Room was not clean — not vacuumed, bin full. Difficult check-in; room code failed then another 20 minutes to fix.",
-      "text": "Dirty room on arrival. Location is convenient. Room was not clean — not vacuumed, bin full. Difficult check-in; room code failed then another 20 minutes to fix.",
+      "id": "8ba2f493feb068f1",
+      "propertyId": "olympic-paddington",
+      "guestName": "Jean Luc",
+      "guestCountry": "France",
+      "reviewDate": "2026-11-10",
+      "overallScore": 5.4,
+      "title": "Room smelled on arrival",
+      "pros": "Rooftop terrace is nice and location is great for sports.",
+      "cons": "Room smelled of damp. Cleaner said it was done but smell came back next day.",
+      "text": "Room smelled on arrival. Rooftop terrace is nice and location is great for sports. Room smelled of damp. Cleaner said it was done but smell came back next day.",
       "topics": [
         "cleanliness",
-        "check-in",
         "location",
         "room-condition"
       ],
       "sentiment": "negative",
       "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/potts-point",
+      "sourceUrl": "seed://booking/olympic-paddington",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -515,24 +497,25 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "7a0d99169a7012aa",
-      "propertyId": "olympic-paddington",
-      "guestName": "Chloe",
+      "id": "39173e71b7fe7332",
+      "propertyId": "potts-point",
+      "guestName": "Tom",
       "guestCountry": "United Kingdom",
-      "reviewDate": "2026-11-03",
-      "overallScore": 7,
-      "title": "Quiet midweek stay",
-      "pros": "Staff were polite and the room was tidy midweek.",
-      "cons": "Facilities feel older. WiFi was slow in the evening.",
-      "text": "Quiet midweek stay. Staff were polite and the room was tidy midweek. Facilities feel older. WiFi was slow in the evening.",
+      "reviewDate": "2026-11-08",
+      "overallScore": 4.2,
+      "title": "Dirty room on arrival",
+      "pros": "Location is convenient.",
+      "cons": "Room was not clean — not vacuumed, bin full. Difficult check-in; room code failed then another 20 minutes to fix.",
+      "text": "Dirty room on arrival. Location is convenient. Room was not clean — not vacuumed, bin full. Difficult check-in; room code failed then another 20 minutes to fix.",
       "topics": [
-        "staff",
-        "facilities",
+        "cleanliness",
+        "check-in",
+        "location",
         "room-condition"
       ],
-      "sentiment": "neutral",
+      "sentiment": "negative",
       "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/olympic-paddington",
+      "sourceUrl": "seed://booking/potts-point",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -557,6 +540,46 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
+      "id": "7a0d99169a7012aa",
+      "propertyId": "olympic-paddington",
+      "guestName": "Chloe",
+      "guestCountry": "United Kingdom",
+      "reviewDate": "2026-11-03",
+      "overallScore": 7,
+      "title": "Quiet midweek stay",
+      "pros": "Staff were polite and the room was tidy midweek.",
+      "cons": "Facilities feel older. WiFi was slow in the evening.",
+      "text": "Quiet midweek stay. Staff were polite and the room was tidy midweek. Facilities feel older. WiFi was slow in the evening.",
+      "topics": [
+        "staff",
+        "facilities",
+        "room-condition"
+      ],
+      "sentiment": "neutral",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/olympic-paddington",
+      "collectionMethod": "seed-bootstrap"
+    },
+    {
+      "id": "0a2a7905a53956c5",
+      "propertyId": "central-sydney",
+      "guestName": "Jean Luc",
+      "guestCountry": "France",
+      "reviewDate": "2026-11-01",
+      "overallScore": 8.2,
+      "title": "Walking distance to Chinatown",
+      "pros": "Near Central Station with plenty of dining options nearby.",
+      "cons": "Stairs only — tough with a big suitcase.",
+      "text": "Walking distance to Chinatown. Near Central Station with plenty of dining options nearby. Stairs only — tough with a big suitcase.",
+      "topics": [
+        "location"
+      ],
+      "sentiment": "positive",
+      "scrapedAt": "2026-11-25T11:13:04.212Z",
+      "sourceUrl": "seed://booking/central-sydney",
+      "collectionMethod": "seed-bootstrap"
+    },
+    {
       "id": "6fe84d79f2ccdfd3",
       "propertyId": "potts-point",
       "guestName": "Hiro",
@@ -578,22 +601,22 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "0a2a7905a53956c5",
-      "propertyId": "central-sydney",
-      "guestName": "Jean Luc",
-      "guestCountry": "France",
-      "reviewDate": "2026-11-01",
-      "overallScore": 8.2,
-      "title": "Walking distance to Chinatown",
-      "pros": "Near Central Station with plenty of dining options nearby.",
-      "cons": "Stairs only — tough with a big suitcase.",
-      "text": "Walking distance to Chinatown. Near Central Station with plenty of dining options nearby. Stairs only — tough with a big suitcase.",
+      "id": "4cbc84fd056486c4",
+      "propertyId": "darling-harbour",
+      "guestName": "Dawn",
+      "guestCountry": "United States",
+      "reviewDate": "2026-10-25",
+      "overallScore": 9.4,
+      "title": "Walked to Darling Harbour in minutes",
+      "pros": "Unbeatable location, tidy rooms, quiet at night, breakfast and dinner better than expected.",
+      "cons": "",
+      "text": "Walked to Darling Harbour in minutes. Unbeatable location, tidy rooms, quiet at night, breakfast and dinner better than expected.",
       "topics": [
         "location"
       ],
       "sentiment": "positive",
       "scrapedAt": "2026-11-25T11:13:04.212Z",
-      "sourceUrl": "seed://booking/central-sydney",
+      "sourceUrl": "seed://booking/darling-harbour",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -618,22 +641,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "4cbc84fd056486c4",
-      "propertyId": "darling-harbour",
-      "guestName": "Dawn",
-      "guestCountry": "United States",
-      "reviewDate": "2026-10-25",
-      "overallScore": 9.4,
-      "title": "Walked to Darling Harbour in minutes",
-      "pros": "Unbeatable location, tidy rooms, quiet at night, breakfast and dinner better than expected.",
-      "cons": "",
-      "text": "Walked to Darling Harbour in minutes. Unbeatable location, tidy rooms, quiet at night, breakfast and dinner better than expected.",
+      "id": "41cde430c78dbc38",
+      "propertyId": "central-sydney",
+      "guestName": "Chloe",
+      "guestCountry": "United Kingdom",
+      "reviewDate": "2026-10-23",
+      "overallScore": 6.8,
+      "title": "WiFi dropped during calls",
+      "pros": "Location for CBD meetings was ideal. Staff were polite.",
+      "cons": "WiFi dropped twice during work calls. Afternoon bathroom queues.",
+      "text": "WiFi dropped during calls. Location for CBD meetings was ideal. Staff were polite. WiFi dropped twice during work calls. Afternoon bathroom queues.",
       "topics": [
+        "staff",
+        "facilities",
         "location"
       ],
-      "sentiment": "positive",
-      "scrapedAt": "2026-11-25T11:13:04.212Z",
-      "sourceUrl": "seed://booking/darling-harbour",
+      "sentiment": "neutral",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/central-sydney",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -660,24 +685,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "41cde430c78dbc38",
-      "propertyId": "central-sydney",
-      "guestName": "Chloe",
-      "guestCountry": "United Kingdom",
-      "reviewDate": "2026-10-23",
-      "overallScore": 6.8,
-      "title": "WiFi dropped during calls",
-      "pros": "Location for CBD meetings was ideal. Staff were polite.",
-      "cons": "WiFi dropped twice during work calls. Afternoon bathroom queues.",
-      "text": "WiFi dropped during calls. Location for CBD meetings was ideal. Staff were polite. WiFi dropped twice during work calls. Afternoon bathroom queues.",
+      "id": "9c571a75bd20b89b",
+      "propertyId": "darling-harbour",
+      "guestName": "Priya",
+      "guestCountry": "India",
+      "reviewDate": "2026-10-14",
+      "overallScore": 8,
+      "title": "Solid budget stay",
+      "pros": "Free dinner saved money and staff helped with local tips.",
+      "cons": "Shared kitchen left messy by other guests sometimes.",
+      "text": "Solid budget stay. Free dinner saved money and staff helped with local tips. Shared kitchen left messy by other guests sometimes.",
       "topics": [
         "staff",
         "facilities",
-        "location"
+        "value"
       ],
-      "sentiment": "neutral",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/central-sydney",
+      "sentiment": "positive",
+      "scrapedAt": "2026-11-25T11:13:04.212Z",
+      "sourceUrl": "seed://booking/darling-harbour",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -702,24 +727,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "9c571a75bd20b89b",
-      "propertyId": "darling-harbour",
-      "guestName": "Priya",
-      "guestCountry": "India",
-      "reviewDate": "2026-10-14",
-      "overallScore": 8,
-      "title": "Solid budget stay",
-      "pros": "Free dinner saved money and staff helped with local tips.",
-      "cons": "Shared kitchen left messy by other guests sometimes.",
-      "text": "Solid budget stay. Free dinner saved money and staff helped with local tips. Shared kitchen left messy by other guests sometimes.",
+      "id": "5c35a284b9c462e9",
+      "propertyId": "central-sydney",
+      "guestName": "Omar",
+      "guestCountry": "UAE",
+      "reviewDate": "2026-10-12",
+      "overallScore": 9.1,
+      "title": "Onsite and remote staff were helpful",
+      "pros": "Seamless check-in/out, cleaners do an amazing job, beds are super comfy.",
+      "cons": "",
+      "text": "Onsite and remote staff were helpful. Seamless check-in/out, cleaners do an amazing job, beds are super comfy.",
       "topics": [
-        "staff",
-        "facilities",
-        "value"
+        "cleanliness",
+        "check-in",
+        "staff"
       ],
       "sentiment": "positive",
-      "scrapedAt": "2026-11-25T11:13:04.212Z",
-      "sourceUrl": "seed://booking/darling-harbour",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/central-sydney",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -745,24 +770,25 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "5c35a284b9c462e9",
-      "propertyId": "central-sydney",
-      "guestName": "Omar",
-      "guestCountry": "UAE",
-      "reviewDate": "2026-10-12",
-      "overallScore": 9.1,
-      "title": "Onsite and remote staff were helpful",
-      "pros": "Seamless check-in/out, cleaners do an amazing job, beds are super comfy.",
-      "cons": "",
-      "text": "Onsite and remote staff were helpful. Seamless check-in/out, cleaners do an amazing job, beds are super comfy.",
+      "id": "31b2b752925813ea",
+      "propertyId": "darling-harbour",
+      "guestName": "Nicole",
+      "guestCountry": "Canada",
+      "reviewDate": "2026-10-01",
+      "overallScore": 5.5,
+      "title": "Bathroom cleanliness slipped",
+      "pros": "Staff were polite and location is excellent.",
+      "cons": "Bathroom was dirty by evening and the room smelled musty.",
+      "text": "Bathroom cleanliness slipped. Staff were polite and location is excellent. Bathroom was dirty by evening and the room smelled musty.",
       "topics": [
         "cleanliness",
-        "check-in",
-        "staff"
+        "staff",
+        "location",
+        "room-condition"
       ],
-      "sentiment": "positive",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/central-sydney",
+      "sentiment": "negative",
+      "scrapedAt": "2026-11-25T11:13:04.212Z",
+      "sourceUrl": "seed://booking/darling-harbour",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -788,25 +814,24 @@
       "collectionMethod": "seed-bootstrap"
     },
     {
-      "id": "31b2b752925813ea",
-      "propertyId": "darling-harbour",
-      "guestName": "Nicole",
-      "guestCountry": "Canada",
-      "reviewDate": "2026-10-01",
-      "overallScore": 5.5,
-      "title": "Bathroom cleanliness slipped",
-      "pros": "Staff were polite and location is excellent.",
-      "cons": "Bathroom was dirty by evening and the room smelled musty.",
-      "text": "Bathroom cleanliness slipped. Staff were polite and location is excellent. Bathroom was dirty by evening and the room smelled musty.",
+      "id": "eca494c1db1739b6",
+      "propertyId": "central-sydney",
+      "guestName": "Mia",
+      "guestCountry": "South Korea",
+      "reviewDate": "2026-09-29",
+      "overallScore": 5.8,
+      "title": "Room not ready / dusty",
+      "pros": "Location near Central is excellent.",
+      "cons": "Room wasn't vacuumed on arrival and bin wasn't emptied. Felt rundown.",
+      "text": "Room not ready / dusty. Location near Central is excellent. Room wasn't vacuumed on arrival and bin wasn't emptied. Felt rundown.",
       "topics": [
         "cleanliness",
-        "staff",
         "location",
         "room-condition"
       ],
       "sentiment": "negative",
-      "scrapedAt": "2026-11-25T11:13:04.212Z",
-      "sourceUrl": "seed://booking/darling-harbour",
+      "scrapedAt": "2026-11-25T11:13:04.213Z",
+      "sourceUrl": "seed://booking/central-sydney",
       "collectionMethod": "seed-bootstrap"
     },
     {
@@ -827,27 +852,6 @@
       "sentiment": "neutral",
       "scrapedAt": "2026-11-25T11:13:04.213Z",
       "sourceUrl": "seed://booking/potts-point",
-      "collectionMethod": "seed-bootstrap"
-    },
-    {
-      "id": "eca494c1db1739b6",
-      "propertyId": "central-sydney",
-      "guestName": "Mia",
-      "guestCountry": "South Korea",
-      "reviewDate": "2026-09-29",
-      "overallScore": 5.8,
-      "title": "Room not ready / dusty",
-      "pros": "Location near Central is excellent.",
-      "cons": "Room wasn't vacuumed on arrival and bin wasn't emptied. Felt rundown.",
-      "text": "Room not ready / dusty. Location near Central is excellent. Room wasn't vacuumed on arrival and bin wasn't emptied. Felt rundown.",
-      "topics": [
-        "cleanliness",
-        "location",
-        "room-condition"
-      ],
-      "sentiment": "negative",
-      "scrapedAt": "2026-11-25T11:13:04.213Z",
-      "sourceUrl": "seed://booking/central-sydney",
       "collectionMethod": "seed-bootstrap"
     }
   ]
