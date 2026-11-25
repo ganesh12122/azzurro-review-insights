@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Copy, Check, MessageSquareText, Loader2 } from "lucide-react";
 import type { Review } from "@/lib/types";
+import { InfoTip } from "@/components/dashboard/InfoTip";
 
 type Props = {
   review: Review;
@@ -58,19 +59,26 @@ export function DraftReplyButton({ review, propertyName }: Props) {
 
   return (
     <div className="mt-3">
-      <button
-        type="button"
-        onClick={() => void draft()}
-        disabled={busy}
-        className="inline-flex items-center gap-1.5 rounded-lg bg-azzurro-navy px-2.5 py-1.5 text-xs font-semibold text-white hover:brightness-110 disabled:opacity-60"
-      >
-        {busy ? (
-          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-        ) : (
-          <MessageSquareText className="h-3.5 w-3.5" />
-        )}
-        {busy ? "Drafting…" : "Draft reply"}
-      </button>
+      <div className="flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          onClick={() => void draft()}
+          disabled={busy}
+          className="inline-flex items-center gap-1.5 rounded-lg bg-azzurro-navy px-2.5 py-1.5 text-xs font-semibold text-white hover:brightness-110 disabled:opacity-60"
+        >
+          {busy ? (
+            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+          ) : (
+            <MessageSquareText className="h-3.5 w-3.5" />
+          )}
+          {busy ? "Drafting…" : "Draft reply"}
+        </button>
+        <InfoTip label="About Draft reply">
+          Draft an AI reply in seconds, then copy and paste it into Booking.com
+          (or email the guest). Review and tweak before sending — it’s a
+          starting point, not auto-posted.
+        </InfoTip>
+      </div>
 
       {open && (
         <div className="mt-2 rounded-xl border border-azzurro-line bg-white p-3">
