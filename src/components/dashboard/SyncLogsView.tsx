@@ -34,11 +34,11 @@ function statusLabel(status: string) {
 }
 
 function statusClass(status: string) {
-  if (status === "ok") return "bg-emerald-50 text-emerald-800";
+  if (status === "ok") return "bg-teal-50 text-teal-800";
   if (status === "partial" || status === "blocked")
-    return "bg-amber-50 text-amber-900";
+    return "bg-azzurro-accent-soft text-azzurro-navy";
   if (status === "failed") return "bg-red-50 text-red-800";
-  return "bg-slate-100 text-slate-700";
+  return "bg-azzurro-mist text-azzurro-muted";
 }
 
 export function SyncLogsView() {
@@ -79,53 +79,52 @@ export function SyncLogsView() {
   const history = state?.history || (state?.lastSync ? [state.lastSync] : []);
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-6">
-      <header className="space-y-1 border-b border-slate-200 pb-4">
-        <p className="text-sm font-medium text-sky-800">Admin · System</p>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-8 sm:py-8">
+      <header className="azzurro-card overflow-hidden bg-azzurro-navy p-6 text-white sm:p-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-azzurro-accent">
+          Admin · System
+        </p>
+        <h1 className="font-display mt-2 text-3xl font-semibold tracking-tight">
           Sync logs
         </h1>
-        <p className="max-w-2xl text-sm text-slate-600">
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
           Automatic collection runs every day at{" "}
-          <strong>00:00 Australia/Sydney</strong> (best-effort). Results appear
-          here. Prefer <em>Import data</em> when you have a fresh HTML/CSV file
-          — that path always merges without depending on Booking.com bot checks.
+          <strong className="text-white">00:00 Australia/Sydney</strong>{" "}
+          (best-effort). Prefer Import data for reliable HTML/CSV merges.
         </p>
       </header>
 
-      <section className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
-          <p className="text-xs uppercase tracking-wide text-slate-500">
+      <section className="grid gap-4 sm:grid-cols-3">
+        <div className="azzurro-card p-4">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-azzurro-muted">
             Schedule
           </p>
-          <p className="mt-1 text-lg font-semibold text-slate-900">
+          <p className="font-display mt-1 text-xl font-semibold text-azzurro-navy">
             {state?.schedule?.approxLocal || "00:00 Sydney"}
           </p>
-          <p className="mt-1 text-xs text-slate-500">Daily GitHub Action</p>
+          <p className="mt-1 text-xs text-azzurro-muted">Daily GitHub Action</p>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
-          <p className="text-xs uppercase tracking-wide text-slate-500">
+        <div className="azzurro-card p-4">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-azzurro-muted">
             Reviews in dataset
           </p>
-          <p className="mt-1 text-lg font-semibold text-slate-900">
+          <p className="font-display mt-1 text-xl font-semibold text-azzurro-navy">
             {state?.count ?? "—"}
           </p>
-          <p className="mt-1 text-xs text-slate-500">After last successful merge</p>
+          <p className="mt-1 text-xs text-azzurro-muted">After last merge</p>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
-          <p className="text-xs uppercase tracking-wide text-slate-500">
+        <div className="azzurro-card p-4">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-azzurro-muted">
             Last status
           </p>
-          <p className="mt-1 text-lg font-semibold text-slate-900">
-            {state?.lastSync
-              ? statusLabel(state.lastSync.status)
-              : "—"}
+          <p className="font-display mt-1 text-xl font-semibold text-azzurro-navy">
+            {state?.lastSync ? statusLabel(state.lastSync.status) : "—"}
           </p>
           <button
             type="button"
             onClick={() => void runBestEffortSync()}
             disabled={busy}
-            className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-sky-800 hover:underline disabled:opacity-50"
+            className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-azzurro-accent hover:underline disabled:opacity-50"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${busy ? "animate-spin" : ""}`} />
             {busy ? "Running…" : "Run best-effort sync now"}
@@ -134,44 +133,49 @@ export function SyncLogsView() {
       </section>
 
       {flash && (
-        <p className="rounded-md bg-slate-100 px-3 py-2 text-xs text-slate-700">
+        <p className="rounded-xl bg-azzurro-mist px-3 py-2 text-xs text-azzurro-ink">
           {flash}
         </p>
       )}
 
-      <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        <div className="border-b border-slate-200 px-4 py-3">
-          <h2 className="text-sm font-semibold text-slate-900">Run history</h2>
+      <section className="azzurro-card overflow-hidden p-0">
+        <div className="border-b border-azzurro-line px-5 py-4">
+          <h2 className="font-display text-lg font-semibold text-azzurro-navy">
+            Run history
+          </h2>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500">
+            <thead className="bg-azzurro-mist/60 text-[11px] uppercase tracking-wide text-azzurro-muted">
               <tr>
-                <th className="px-4 py-2">When (UTC)</th>
-                <th className="px-4 py-2">Trigger</th>
-                <th className="px-4 py-2">Status</th>
-                <th className="px-4 py-2">New</th>
-                <th className="px-4 py-2">Total</th>
-                <th className="px-4 py-2">Notes</th>
+                <th className="px-4 py-3">When (UTC)</th>
+                <th className="px-4 py-3">Trigger</th>
+                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">New</th>
+                <th className="px-4 py-3">Total</th>
+                <th className="px-4 py-3">Notes</th>
               </tr>
             </thead>
             <tbody>
               {history.map((row) => (
-                <tr key={row.at + row.trigger} className="border-t border-slate-100">
-                  <td className="px-4 py-2 whitespace-nowrap text-slate-700">
+                <tr
+                  key={row.at + row.trigger}
+                  className="border-t border-azzurro-line/70"
+                >
+                  <td className="whitespace-nowrap px-4 py-3 text-azzurro-ink">
                     {row.at.slice(0, 19).replace("T", " ")}
                   </td>
-                  <td className="px-4 py-2 text-slate-600">{row.trigger}</td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-3 text-azzurro-muted">{row.trigger}</td>
+                  <td className="px-4 py-3">
                     <span
-                      className={`rounded px-1.5 py-0.5 text-xs font-medium ${statusClass(row.status)}`}
+                      className={`rounded-md px-1.5 py-0.5 text-xs font-semibold ${statusClass(row.status)}`}
                     >
                       {statusLabel(row.status)}
                     </span>
                   </td>
-                  <td className="px-4 py-2">{row.newReviews ?? 0}</td>
-                  <td className="px-4 py-2">{row.mergedTotal ?? "—"}</td>
-                  <td className="max-w-xs px-4 py-2 text-xs text-slate-500">
+                  <td className="px-4 py-3">{row.newReviews ?? 0}</td>
+                  <td className="px-4 py-3">{row.mergedTotal ?? "—"}</td>
+                  <td className="max-w-xs px-4 py-3 text-xs text-azzurro-muted">
                     {row.note ||
                       (row.errors?.length
                         ? row.errors.slice(0, 1).join("")
@@ -183,7 +187,7 @@ export function SyncLogsView() {
                 <tr>
                   <td
                     colSpan={6}
-                    className="px-4 py-6 text-center text-slate-500"
+                    className="px-4 py-8 text-center text-azzurro-muted"
                   >
                     No sync runs logged yet.
                   </td>

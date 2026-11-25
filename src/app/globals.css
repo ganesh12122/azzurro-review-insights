@@ -1,19 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  /* Azzurro brand — aligned with logo + azzurrohotels.com */
+  --azzurro-navy: #0a1b33;
+  --azzurro-navy-deep: #061222;
+  --azzurro-ink: #12243d;
+  --azzurro-mist: #eef3f8;
+  --azzurro-paper: #f7f9fc;
+  --azzurro-accent: #e91e8c;
+  --azzurro-accent-soft: #fce7f3;
+  --azzurro-azure: #2b6cb0;
+  --azzurro-line: #d7e0ea;
+  --azzurro-muted: #5b6b7c;
+  --background: var(--azzurro-paper);
+  --foreground: var(--azzurro-ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-azzurro-navy: var(--azzurro-navy);
+  --color-azzurro-navy-deep: var(--azzurro-navy-deep);
+  --color-azzurro-ink: var(--azzurro-ink);
+  --color-azzurro-mist: var(--azzurro-mist);
+  --color-azzurro-paper: var(--azzurro-paper);
+  --color-azzurro-accent: var(--azzurro-accent);
+  --color-azzurro-accent-soft: var(--azzurro-accent-soft);
+  --color-azzurro-azure: var(--azzurro-azure);
+  --color-azzurro-line: var(--azzurro-line);
+  --color-azzurro-muted: var(--azzurro-muted);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(233, 30, 140, 0.06), transparent 55%),
+    radial-gradient(900px 400px at 100% 0%, rgba(43, 108, 176, 0.08), transparent 50%),
+    var(--azzurro-paper);
+  color: var(--azzurro-ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+.azzurro-card {
+  border: 1px solid var(--azzurro-line);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 1rem;
+  box-shadow: 0 1px 0 rgba(10, 27, 51, 0.03);
+  backdrop-filter: blur(6px);
+}
+
+.azzurro-input {
+  border: 1px solid var(--azzurro-line);
+  background: #fff;
+  border-radius: 0.65rem;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.875rem;
+  color: var(--azzurro-ink);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.azzurro-input:focus {
+  border-color: color-mix(in oklab, var(--azzurro-accent) 55%, var(--azzurro-azure));
+  box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.12);
 }
