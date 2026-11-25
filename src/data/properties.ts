@@ -1,37 +1,38 @@
 import type { Property } from "@/lib/types";
 
-/**
- * Swap / reorder if the trial portal names different properties
- * (e.g. Olympic Hotel Paddington instead of Boutique Surry Hills).
- */
+/** Official trial properties from the portal brief. */
 export const PROPERTIES: Property[] = [
   {
-    id: "darling-harbour",
-    name: "Azzurro Pod Hotel Darling Harbour",
-    shortName: "Darling Harbour",
-    address: "22 Allen Street, Pyrmont NSW 2009",
-    suburb: "Pyrmont",
-  },
-  {
-    id: "central-sydney",
-    name: "Azzurro Pod Hotel Central Sydney",
-    shortName: "Central Sydney",
-    address: "90 Wentworth Avenue, Surry Hills NSW 2010",
-    suburb: "Surry Hills",
+    id: "olympic-paddington",
+    name: "Olympic Hotel Paddington",
+    shortName: "Olympic Paddington",
+    bookingSlug: "olympic-paddington",
+    bookingUrl: "https://www.booking.com/hotel/au/olympic-paddington.html",
+    suburb: "Paddington",
   },
   {
     id: "potts-point",
     name: "Azzurro Pod Hotel Potts Point",
     shortName: "Potts Point",
-    address: "141–143 Victoria Street, Potts Point NSW 2011",
+    bookingSlug: "venus-potts-point-sydney",
+    bookingUrl: "https://www.booking.com/hotel/au/venus-potts-point-sydney.html",
     suburb: "Potts Point",
   },
   {
-    id: "surry-hills",
-    name: "Azzurro Boutique Hotel Surry Hills",
-    shortName: "Boutique Surry Hills",
-    address: "84 Flinders Street, Darlinghurst NSW 2010",
-    suburb: "Darlinghurst",
+    id: "central-sydney",
+    name: "Azzurro Pod Hotel Central Sydney",
+    shortName: "Central Sydney",
+    bookingSlug: "venus-surry-hills",
+    bookingUrl: "https://www.booking.com/hotel/au/venus-surry-hills.html",
+    suburb: "Surry Hills",
+  },
+  {
+    id: "darling-harbour",
+    name: "Azzurro Pod Hotel Darling Harbour",
+    shortName: "Darling Harbour",
+    bookingSlug: "chateau-de-venus",
+    bookingUrl: "https://www.booking.com/hotel/au/chateau-de-venus.html",
+    suburb: "Pyrmont",
   },
 ];
 

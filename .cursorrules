@@ -2,12 +2,13 @@
 
 ## Business Context
 - Client: Azzurro Hotels Pty Ltd (Sydney), pod/boutique hospitality.
-- Default properties (swap if portal specifies different four):
-  1. Azzurro Pod Hotel Darling Harbour — 22 Allen St, Pyrmont
-  2. Azzurro Pod Hotel Central Sydney — 90 Wentworth Ave
-  3. Azzurro Pod Hotel Potts Point — 141–143 Victoria St
-  4. Azzurro Boutique Hotel Surry Hills — 84 Flinders St
-- Goal: Ops + executive dashboard that turns Booking.com guest feedback into actionable daily tasks.
+- Portal properties:
+  1. Olympic Hotel Paddington
+  2. Potts Point (venus-potts-point-sydney)
+  3. Central Sydney (venus-surry-hills)
+  4. Darling Harbour (chateau-de-venus)
+- Must collect public Booking.com reviews without API; dashboard for non-tech ops staff.
+- Required: week vs previous week rating, property breakdown, review feed, date/property filters, pos/neg trends, topic insights.
 
 ## Tech Stack
 - Next.js App Router, TypeScript, Tailwind CSS

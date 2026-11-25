@@ -45,3 +45,6 @@ next-env.d.ts
 _trial-notes/
 docs/private/
 
+# Large raw scrape dumps (optional local debugging)
+src/data/raw/
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+You know you could be getting paid to poke around in our code?
+We're hiring designers and developers to work in Amsterdam:
+https://careers.booking.com/
+-->
+<!-- wdot-802 -->
+<html lang="en-us" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# booking_com: http://ogp.me/ns/fb/booking_com#" class="noJS b_chrome b_chrome_120 supports_inline-block supports_flexbox_unprefixed supports_fontface " >
+<head profile="http://a9.com/-/spec/opensearch/1.1/">
+<script type="text/javascript" nonce="EaFfHJmyi31npDf" src="https://cdn.cookielaw.org/consent/3ea94870-d4b1-483a-b1d2-faf1d982bb31/OtAutoBlock.js"></script>
+<script type="text/javascript" nonce="EaFfHJmyi31npDf">
+(function () {
+document.addEventListener('click', function(e) {
+if (e.target && e.target.classList.contains('ot-preference-center-footer')) {
+e.preventDefault();
+Optanon && Optanon.ToggleInfoDisplay();
+}
+});
+document.addEventListener('cookie_banner_closed', function(e) {
+if (window.PCM && window.B && window.B.et) {
+window.B.et.goal((window.PCM.Marketing || window.PCM.Analytical) ? 'cookie_consent_accepted_policy_banner' : 'cookie_consent_declined_policy_banner');
+}
+});
+})();
+</script>
+<script type="text/javascript" nonce="EaFfHJmyi31npDf">
+window.PCM = {
+config: {
+isBanner: false,
+domainUUID: '3ea94870-d4b1-483a-b1d2-faf1d982bb31',
+isPCSIntegration: true,
+shareConsentWithin: 'www.booking.com',
+isCrossDomainCookieSharingEnabled: false,
+nonce: 'EaFfHJmyi31npDf',
+countryCode: 'us',
+regionCode: 'tn',
+isUserLoggedIn: false,
+},
+pcm_consent_cookie: ''
+};
+(()=>{let e,h=e=>{let n,t,o=new FormData,i={error:e.message||"",message:e.message||"",stack:e.stack||"",name:"js_errors",colno:0,lno:0,url:window.location.hostname+window.location.pathname,pid:(null==(t=null==(n=window.B)?void 0:n.env)?void 0:t.pageview_id)||1,be_running:1,be_column:0,be_line:0,be_stack:e.stack||"",be_message:e.message||"",be_file:window.location.hostname+window.location.pathname,be_microfrontend_group:e.message||"PCM_COOKIE_BANNER_FE"};Object.keys(i).forEach(e=>{o.append(e,i[e])}),window.fetch("/js_errors",{method:"POST",body:o}).catch(()=>!1)};window.cookieStore&&window.cookieStore.addEventListener("change",e=>{var n;null!=(n=null==e?void 0:e.changed)&&n.length&&null!=e&&e.changed.forEach(e=>{"OptanonAlertBoxClosed"!==e.name||D(e.value)||h(new Error("OptanonAlertBoxClosed bad value detected: "+e.value)),"OptanonConsent"!==e.name||S(e.value)||h(new Error("OptanonConsent bad value detected: "+e.value))})});let v;(n=v=v||{}).ANALYTICAL="C0002",n.MARKETING="C0004";let y;(n=y=y||{}).PREFERENCES_SAVE_SETTINGS="preferences_save_settings",n.BANNER_REJECT_ALL="banner_reject_all",n.BANNER_ACCEPT_ALL="banner_accept_cookies",n.PREFERENCES_REJECT_ALL="preferences_reject_all",n.PREFERENCES_ACCEPT_ALL="preferences_allow_all";let C,R=((n=C=C||{}).BACKFILLING="back_filling",n.GPC_SIGNAL="gpc_signal",n.BACKFILLING_MISMATCH="back_filling_mismatch",n.BACKFILLING_EXPIRED="back_filling_expired",[y.BANNER_ACCEPT_ALL,y.PREFERENCES_A

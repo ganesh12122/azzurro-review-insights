@@ -1,34 +1,28 @@
 export type PropertyId =
-  | "darling-harbour"
-  | "central-sydney"
+  | "olympic-paddington"
   | "potts-point"
-  | "surry-hills";
+  | "central-sydney"
+  | "darling-harbour";
 
 export type Sentiment = "positive" | "neutral" | "negative";
 
-export type TravelerType =
-  | "solo"
-  | "couple"
-  | "group"
-  | "business"
-  | "family";
+export type TopicId =
+  | "cleanliness"
+  | "check-in"
+  | "staff"
+  | "noise"
+  | "facilities"
+  | "location"
+  | "room-condition"
+  | "value";
 
 export interface Property {
   id: PropertyId;
   name: string;
   shortName: string;
-  address: string;
+  bookingSlug: string;
+  bookingUrl: string;
   suburb: string;
-}
-
-/** Booking.com-style category subscores (1–10). */
-export interface CategoryScores {
-  staff: number;
-  cleanliness: number;
-  location: number;
-  facilities: number;
-  comfort: number;
-  value: number;
 }
 
 export interface Review {
@@ -36,32 +30,23 @@ export interface Review {
   propertyId: PropertyId;
   guestName: string;
   guestCountry: string;
-  travelerType: TravelerType;
-  stayDate: string; // ISO date
-  reviewDate: string; // ISO date
+  reviewDate: string; // ISO yyyy-mm-dd
+  stayDate?: string;
   overallScore: number; // 1–10
-  categories?: Partial<CategoryScores>;
   title: string;
   pros: string;
   cons: string;
-  replied: boolean;
-  replyText?: string;
-  tags: string[];
+  text: string;
+  topics: TopicId[];
+  sentiment: Sentiment;
+  scrapedAt: string;
+  sourceUrl: string;
 }
 
-export interface ActionItem {
-  id: string;
-  priority: "urgent" | "high" | "medium" | "low";
-  propertyId: PropertyId | "all";
-  issue: string;
-  recommendedFix: string;
-  theme: string;
-}
-
-export interface InsightsPayload {
-  praise: string[];
-  painPoints: string[];
-  actionItems: ActionItem[];
-  summary: string;
-  source: "llm" | "fallback";
+export interface TopicInsight {
+  topic: TopicId;
+  label: string;
+  mentionCount: number;
+  negativeMentionCount: number;
+  shareOfNegatives: number; // 0–1 among negative reviews in scope
 }
