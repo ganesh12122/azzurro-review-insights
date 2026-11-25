@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Azzurro Review Insights
 
-## Getting Started
+Booking.com review insights dashboard for Azzurro Hotels properties.
 
-First, run the development server:
+Turns guest feedback into KPIs, category scores, trends, searchable reviews, AI ops insights, and draft management replies.
+
+## Stack
+
+- Next.js (App Router) + TypeScript + Tailwind CSS
+- Recharts + Lucide
+- AI via Next.js Route Handlers (optional LLM key) with deterministic fallback
+- Deploy: Vercel
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See `.env.example`. LLM keys stay in `.env.local` / Vercel env vars — never commit secrets.
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/                 # pages + API routes
+  components/dashboard # UI modules (built during trial)
+  data/                # properties + sample reviews
+  lib/                 # types + helpers
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Production notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This assessment demo uses structured sample data (or portal CSV) so the demo stays reliable without Booking.com partner credentials.
 
-## Deploy on Vercel
+A production version could add:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Postgres + auth for multi-property ops teams
+- Scheduled sync / Booking Connectivity webhooks when partner access exists
+- Owner assignment + SLA tracking on action items
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+Private assessment submission — not for redistribution.

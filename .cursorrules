@@ -1,0 +1,33 @@
+# Project Context: Azzurro Hotels — Booking.com Review Insights Dashboard
+
+## Business Context
+- Client: Azzurro Hotels Pty Ltd (Sydney), pod/boutique hospitality.
+- Default properties (swap if portal specifies different four):
+  1. Azzurro Pod Hotel Darling Harbour — 22 Allen St, Pyrmont
+  2. Azzurro Pod Hotel Central Sydney — 90 Wentworth Ave
+  3. Azzurro Pod Hotel Potts Point — 141–143 Victoria St
+  4. Azzurro Boutique Hotel Surry Hills — 84 Flinders St
+- Goal: Ops + executive dashboard that turns Booking.com guest feedback into actionable daily tasks.
+
+## Tech Stack
+- Next.js App Router, TypeScript, Tailwind CSS
+- Charts: Recharts | Icons: Lucide
+- AI via Route Handlers (`/api/insights`, `/api/reply`) + deterministic fallback
+- Deploy: Vercel | Data: structured JSON/CSV (no required DB for demo)
+
+## Core Features
+1. Property switcher (All + each property)
+2. KPI row: overall rating (0–10) + trend, review count, response rate, unreplied negatives, sentiment
+3. Booking.com category scores: Staff, Cleanliness, Location, Facilities, Comfort, Value
+4. Monthly rating / volume trend
+5. AI ops insights + prioritized action items for onsite staff
+6. Draft reply on individual reviews
+7. Searchable/filterable review explorer
+8. CSV / data-source panel for ingest readiness
+
+## Coding Standards
+- Components under `src/components/dashboard/`
+- Types under `src/lib/types.ts`, data under `src/data/`
+- Hospitality-ops UI: slate/neutral, clear status badges, responsive
+- Prefer working polish over over-engineering
+- Never commit secrets or `_trial-notes/`
