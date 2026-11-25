@@ -23,9 +23,6 @@ import {
   topicInsights,
 } from "@/lib/analytics";
 import { TOPIC_LABELS } from "@/lib/topics";
-import { SyncPanel } from "@/components/dashboard/SyncPanel";
-import { ImportPanel } from "@/components/dashboard/ImportPanel";
-
 type Props = {
   reviews: Review[];
   updatedAt: string | null;
@@ -80,9 +77,6 @@ export function Dashboard({ reviews, updatedAt }: Props) {
           {updatedAt ? ` · dataset updated ${updatedAt.slice(0, 19).replace("T", " ")} UTC` : ""}
         </p>
       </header>
-
-      <ImportPanel />
-      <SyncPanel />
 
       <section className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-5">
         <label className="flex flex-col gap-1 text-xs font-medium text-slate-600">
